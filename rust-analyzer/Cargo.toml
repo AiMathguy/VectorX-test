@@ -1,0 +1,8 @@
+[package]
+name = "rust-analyzer-feature-test"
+version = "0.1.0"
+edition = "2021"
+
+[[bin]]
+name = "rust-analyzer-feature-test"
+path = "src/main.rs"
