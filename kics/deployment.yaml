@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: insecure-test-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: insecure-test-app
+  template:
+    metadata:
+      labels:
+        app: insecure-test-app
+    spec:
+      containers:
+        - name: app
+          image: nginx:latest
+          securityContext:
+            privileged: true
+            runAsUser: 0
+          volumeMounts:
+            - name: host-data
+              mountPath: /host
+      volumes:
+        - name: host-data
+          hostPath:
+            path: /tmp
